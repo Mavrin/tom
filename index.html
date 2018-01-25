@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Сказ о microservices</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+    <title>Сказ о microservices</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
     <style>
         .hidePage::after {
             visibility: hidden;
@@ -14,98 +14,150 @@
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Сказ о microservices</h1>
-		<p>Константин Кривленя</p>
-	</header>
-
-	<section class="slide">
+<header class="caption">
+    <h1>Сказ о microservices</h1>
+    <p>Константин Кривленя</p>
+</header>
+<section class="slide">
+    <h2>Monolithic vs Microservices</h2>
+    <figure>
+        <blockquote>
+            <p>
+                If you can’t build a well-structured monolith, what makes you think microservices is the answer?
+            </p>
+        </blockquote>
+        <figcaption>Simon Brown</figcaption>
+    </figure>
+    <footer>
         <ul>
             <li>Разбиение</li>
             <li>Разработка</li>
             <li>Тестирование</li>
             <li>Деплой</li>
             <li>Мониторинг и трессировка</li>
-            <li>Провалы</li>
         </ul>
-        <footer>
-            Python and nodejs
-            Integration test
-            Health test(long test)
-            Separate repositories
-            Same package
-        </footer>
-	</section>
-    <section class="slide">
-        <h2>Код читают не компьютеры, а люди</h2>
-        <figure>
-            <blockqoute>
-                <p>
-                    Когда я это писал, только я и бог знали, что я делаю. Сейчас только бог.
-                </p>
-                <figcaption>Неизвестный программист</figcaption>
-            </blockqoute>
-        </figure>
-    </section>
-    <section class="slide">
-		<h2 class="shout shrink">Что такое микросервисы?</h2>
-	</section>
-	<section class="slide">
-		<p>
-            Микросервисы — современное представление
-            <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D0%B2%D0%B8%D1%81-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0">сервис-ориентированной архитектуры</a>
-            (SOA),
-			используемое для создания распределенных программных систем.
-			Как и в SOA, модули в архитектуре микросервисов взаимодействуют по сети друг с другом для выполнения цели.
-            Ещё одно сходство в том, что микросервисы используют протоколо-независимую технологию.
-            Данная архитектура является первой реализацией SOA, появившейся после внедрения DevOps,
-            и она постепенно становится стандартом для непрерывно развивающихся систем
-        </p>
-        <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Wikipedia</a>
-	</section>
-    <section class="slide">
-        <h2>Философия</h2>
-        <p>
+    </footer>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Что такое микросервисы?</h2>
+</section>
+<section class="slide">
+    <p>
+        Микросервисы — современное представление
+        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D0%B2%D0%B8%D1%81-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0">сервис-ориентированной
+            архитектуры</a>
+        (SOA),
+        используемое для создания распределенных программных систем.
+        Как и в SOA, модули в архитектуре микросервисов взаимодействуют по сети друг с другом для выполнения цели.
+        Ещё одно сходство в том, что микросервисы используют протоколо-независимую технологию.
+        Данная архитектура является первой реализацией SOA, появившейся после внедрения DevOps,
+        и она постепенно становится стандартом для непрерывно развивающихся систем
+    </p>
+    <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Wikipedia</a>
+</section>
+<section class="slide">
+    <h2>Философия</h2>
+    <p>
+    <ul>
+        <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
+        <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
+            это снижает нагрузку на управление
+        </li>
+        <li class="next">Принципы культуры и дизайна должны включать в себя «обход» прежних ошибок</li>
+        <li class="next">Каждый сервис — эластичный, легко меняющийся, элементарный и при этом законченный.</li>
+    </ul>
+    <footer>
+        Unix way
+    </footer>
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Разбиение на сервисы</h2>
+    <footer>
+        How to decompose an application into services?
         <ul>
-            <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
-            <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
-                это снижает нагрузку на управление</li>
-            <li class="next">Принципы культуры и дизайна должны включать в себя «обход» прежних ошибок</li>
-            <li class="next">Каждый сервис — эластичный, легко меняющийся, элементарный и при этом законченный.</li>
+            <li>Decompose by business capability - define services corresponding to business capabilities</li>
+            <li>Decompose by subdomain - define services corresponding to DDD subdomains</li>
         </ul>
-        </p>
-    </section>
-    <section class="slide">
-        <h2 class="shout">Разбиение на сервисы</h2>
+    </footer>
+</section>
+<section class="slide">
+    <h2>Сложности программирования</h2>
+    <figure>
+        <blockquote>
+            <p>
+                В компьютерных науках есть две сложности: инвалидация кэша, именование и ошибка на единицу.
+            </p>
+        </blockquote>
+        <figcaption>Нородная мудрость</figcaption>
+    </figure>
+</section>
+<section class="slide hidePage">
+    <img src="pictures/old_vizydrop_schema.svg" class="cover" alt="old vizydrop schema">
+</section>
+<section class="slide hidePage">
+    <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
+</section>
+<section class="slide">
+    <h2>Процесс разработки</h2>
+    <p>
+    <ul>
+        <li class="next">Отдельный репозиторий для каждого сервиса</li>
+        <li class="next">Артифакт запуска на CI docker контейнер</li>
+        <li class="next">Тесты запускают внутри контейнера</li>
+        <li class="next">Docker compose для запуска интеграционных тестов</li>
+        <li class="next">Запуск e2e на каждый билд на любом сервисе (отказались)</li>
+    </ul>
+    </p>
+</section>
+<section class="slide">
+    <h2>Cтек технологий</h2>
+    <p>
+    <ul>
+        <li>NodeJs</li>
+        <li>Python</li>
+        <li>Postgres</li>
+        <li>MongoDb</li>
+        <li>Redis</li>
+        <li>React</li>
+    </ul>
+    </p>
+</section>
+<section class="slide">
+    <h2>Выбор языка программирования</h2>
+    <p>
+        выбирайте тот инструмент,
+        который знает большинство в команаде,
+        если нет специфики задачи,
+        которая определяет выбор.
+    </p>
+</section>
+<section class="slide">
+    <h2>Нельзя вот так просто взять и начать писать микросервисы</h2>
+    <p>
+        <ul>
+            <li class="next">Архитектура микросервисная, а код пишем как монолит.</li>
+            <li class="next">Много усилий на создание инфраструктуры</li>
+            <li class="next">Проблемы дебага приложений</li>
+        </ul>
         <footer>
-            How to decompose an application into services?
-            <ul>
-                <li>Decompose by business capability - define services corresponding to business capabilities</li>
-                <li>Decompose by subdomain - define services corresponding to DDD subdomains</li>
-            </ul>
+            Разработка одновреммено нескольких сервисов
+            Не поддержка совместимостей между версиями.
         </footer>
-    </section>
-    <section class="slide">
-        <h2>Сложности программирования</h2>
-        <figure>
-            <blockquote>
-                <p>
-                    В компьютерных науках есть две сложности: инвалидация кэша, именование и ошибка на единицу.
-                </p>
-            </blockquote>
-            <figcaption>Нородная мудрость</figcaption>
-        </figure>
-    </section>
-    <section class="slide hidePage">
-        <img src="pictures/old_vizydrop_schema.svg" class="cover" alt="old vizydrop schema">
-    </section>
-    <section class="slide hidePage">
-        <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
-    </section>
-	<div class="progress"></div>
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Тестирование</h2>
+    <footer>
+        сервис который отдает docker compose для запуска тестов каждого сервиса
+        unit tests
+        integration через e2e тесты
+    </footer>
+</section>
+<div class="progress"></div>
 
-	<script src="node_modules/shower-core/shower.min.js"></script>
-	<!-- Copyright © 2018 Константин Кривленя -->
+<script src="node_modules/shower-core/shower.min.js"></script>
+<!-- Copyright © 2018 Константин Кривленя -->
 
 </body>
 </html>
