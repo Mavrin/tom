@@ -135,24 +135,97 @@
 <section class="slide">
     <h2>Нельзя вот так просто взять и начать писать микросервисы</h2>
     <p>
-        <ul>
-            <li class="next">Архитектура микросервисная, а код пишем как монолит.</li>
-            <li class="next">Много усилий на создание инфраструктуры</li>
-            <li class="next">Проблемы дебага приложений</li>
-        </ul>
-        <footer>
-            Разработка одновреммено нескольких сервисов
-            Не поддержка совместимостей между версиями.
-        </footer>
+    <ul>
+        <li class="next">Архитектура микросервисная, а код пишем как монолит.</li>
+        <li class="next">Много усилий на создание инфраструктуры</li>
+        <li class="next">Проблемы дебага приложений</li>
+    </ul>
     </p>
+    <footer>
+        Разработка одновреммено нескольких сервисов
+        Не поддержка совместимостей между версиями.
+    </footer>
 </section>
 <section class="slide">
     <h2 class="shout">Тестирование</h2>
+</section>
+<section class="slide">
+    <h2>Тестирование</h2>
+    <p>
+    <ul>
+        <li class="next">Unit</li>
+        <li class="next">Integration (service public api)</li>
+        <li class="next">e2e тесты на все сервисы перед релизом</li>
+    </ul>
+    </p>
+</section>
+<section class="slide">
+    <h2>Как запускать интреграционные тесты</h2>
+    <p>
+        Пишем серивис, который отдает зависимости для каждого сервиса и указывает на master branch сервисов.
+        В нашем случае docker-compose.yml файл.
+    </p>
     <footer>
-        сервис который отдает docker compose для запуска тестов каждого сервиса
-        unit tests
-        integration через e2e тесты
+        примеры ответов с сервиса
     </footer>
+</section>
+<section class="slide">
+    <h2>Проблемы c CI</h2>
+    <p>
+        Конфигурация запуска тестов хранится в отдельном репозитории, а должен в репозитории сервиса.
+    </p>
+</section>
+<section class="slide">
+    <h2>Как делать ручное тестирование?</h2>
+    <p>
+        Пишем сервис, который позволяет QA конфигурировать по версии билда приложение.
+    </p>
+</section>
+<section class="slide">
+   <h2 class="shout">Deploy</h2>
+</section>
+<section class="slide">
+    <p>
+        <ul>
+            <li class="next">Kubernetes</li>
+            <li class="next">Helm for package manager</li>
+        </ul>
+    </p>
+</section>
+<section class="slide">
+    <p>
+        Каждый коммит в master раскатывает новую версию на staging сервер (так было)
+    </p>
+</section>
+<section class="slide">
+    <h2>Проблема</h2>
+    <p>
+        Легко ошибится в конфигурации сервиса. Забыть добавить в общий чарт новую версию чарта.
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Мониторинг</h2>
+</section>
+<section class="slide">
+    <h2 class="shout">Логи Kibana</h2>
+</section>
+<section class="slide">
+    <h2 class="shout">Метрики Prometheus</h2>
+</section>
+<section class="slide">
+    <h2 class="shout">Grafana для визуализации данных</h2>
+</section>
+<section class="slide">
+    <h2>https://sensuapp.org/ для alerting в слак</h2>
+</section>
+<section class="slide">
+    <h2>Как это дебажить?</h2>
+</section>
+<section class="slide">
+    <h2>Логи наше все, но их нужно связать</h2>
+</section>
+<section class="slide">
+    <h2>zipkin or https://www.envoyproxy.io</h2>
 </section>
 <div class="progress"></div>
 
