@@ -5,38 +5,102 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+    <link rel="stylesheet" href="node_modules/shower-material/styles/screen-16x10.css">
     <style>
         .hidePage::after {
             visibility: hidden;
         }
+    </style>
+    <style>
+        .grid-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 50px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+        .grid-stack div {
+            display: flex;
+            align-items: center;
+        }
+        .grid-stack a {
+            background: none;
+        }
+        .grid-stack img {
+            height: 6em;
+        }
+        .grid-stack-one {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .grid-stack-two {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .grid-stack-three {
+            grid-column: 3;
+            grid-row: 1;
+        }
+        .grid-stack-four {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .grid-stack-five {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .grid-stack-six {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
     </style>
 </head>
 <body class="shower list">
 
 <header class="caption">
     <h1>Сказ о microservices</h1>
-    <p>Константин Кривленя</p>
+    <p><a target="_blank" href="https://twitter.com/krivlenia">Константин Кривленя</a></p>
+
+    <p style="font-size: .4em;margin-top: 20px;">Компания <a target="_blank" href="https://goo.gl/Wrm5CU">Targetprocess</a></p>
 </header>
 <section class="slide">
-    <h2>Monolithic vs Microservices</h2>
-    <figure>
-        <blockquote>
-            <p>
-                If you can’t build a well-structured monolith, what makes you think microservices is the answer?
-            </p>
-        </blockquote>
-        <figcaption>Simon Brown</figcaption>
-    </figure>
-    <footer>
-        <ul>
-            <li>Разбиение</li>
-            <li>Разработка</li>
-            <li>Тестирование</li>
-            <li>Деплой</li>
-            <li>Мониторинг и трессировка</li>
-        </ul>
-    </footer>
+    <div>
+        <h2>Немного о себе</h2>
+        <div style="display: flex">
+            <div style="flex-shrink: 1"><img style="padding-right: 20px" src="pictures/64lMqg7R6g4.jpg" alt=""/></div>
+            <div  style="flex-shrink: 2">Зовут меня Константин Кривленя. <br/>Разработчик в <a href="https://goo.gl/TDyXj2">Targetprocess</a>.<br/>
+                Помогаю опенсорсной JavaScript-библиотеки чартов <a href="https://taucharts.com/">Taucharts</a>. <br/>
+                <a
+                        style="background:url(pictures/twitter-bird-light-bgs.png) no-repeat;padding-left:40px;"
+                        href="https://twitter.com/Krivlenia">Twitter (https://twitter.com/Krivlenia/)</a><br>
+                <a style="background:url(pictures/GitHub-Mark-32px.png) no-repeat;background-size: contain;
+padding-left:40px;"
+                   href="https://github.com/Mavrin">Github (https://github.com/Mavrin/)</a><br>
+                <a style="background:url(pictures/habrahabr.png) center left no-repeat;padding-left:20px;"
+                   href="https://habrahabr.ru/users/mavrin/">Хабр (https://habrahabr.ru/users/mavrin/)</a><br></div>
+        </div>
+    </div>
+</section>
+<section class="slide">
+    <h2 style="padding-left: 0" class="shout shrink"><span style="display: flex; flex-direction: column; align-items: center;"><span>Monolithic</span> <span>vs</span> <span>Microservices</span></span></h2>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Monolithic</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/dom.jpg" alt="Monolithic house"/>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/mono-house-redesign.jpg" alt="Monolithic house redesign"/>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Microservices</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/microservices_house.jpg" alt="Microservices house"/>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/rumah-kubik.jpg" alt="real Microservices house"/>
 </section>
 <section class="slide">
     <h2 class="shout shrink">Что такое микросервисы?</h2>
@@ -66,10 +130,19 @@
         <li class="next">Принципы культуры и дизайна должны включать в себя «обход» прежних ошибок</li>
         <li class="next">Каждый сервис — эластичный, легко меняющийся, элементарный и при этом законченный.</li>
     </ul>
-    <footer>
-        Unix way
-    </footer>
     </p>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Unix way</h2>
+</section>
+<section class="slide">
+    <h2>Команда ls</h2>
+    <p>
+        44 опции в версии <a href="https://ru.wikipedia.org/wiki/GNU">GNU</a>
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Demo</h2>
 </section>
 <section class="slide">
     <h2 class="shout">Разбиение на сервисы</h2>
@@ -99,7 +172,38 @@
     <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
 </section>
 <section class="slide">
-    <h2>Процесс разработки</h2>
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Architect: &quot;we should break this down into 6 microservices&quot;<br>Me: &quot;you have 6 teams who hate each other?&quot;<br>Architect: &quot;how did you know that?&quot;</p>&mdash; Colette Alexander (@colettecello) <a href="https://twitter.com/colettecello/status/749052871719591937?ref_src=twsrc%5Etfw">July 2, 2016</a></blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section class="slide">
+    <h2 class="shout">Процесс разработки</h2>
+</section>
+<section class="slide">
+    <h2>Cтек технологий</h2>
+
+    <div class="grid-stack">
+        <div class="grid-stack-five"><a href="https://nodejs.com"><img src="pictures/nodejs.svg" alt="nodejs"></a></div>
+        <div class="grid-stack-two"><a href="https://www.python.org/"><img src="pictures/python.svg" alt="python"></a></div>
+        <div class="grid-stack-three"><a href="https://www.postgresql.org/"><img src="pictures/Postgresql_elephant.svg" alt="PostgreSQL"></a></div>
+        <div class="grid-stack-four"><a href="https://www.mongodb.com/"><img style="height: 3em" src="pictures/mongodb.svg" alt="mongodb"></a></div>
+        <div class="grid-stack-one"><a href="https://taucharts.com"><img style="height: 1.5em" src="pictures/logo-color.svg" alt="Taucharts"></a></div>
+        <div class="grid-stack-six"><a href="https://facebook.github.io/react/"><img src="pictures/react.svg" alt="React"></a></div>
+    </div>
+</section>
+<section class="slide">
+    <img src="pictures/nodejs-vs-python.png" class="cover" alt="nodejs vs python">
+</section>
+<section class="slide">
+    <h2>Выбор языка программирования</h2>
+    <p>
+        Выбирайте тот инструмент,
+        который знает большинство в команде,
+        если нет специфики задачи,
+        которая определяет выбор.
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Процесс разработки</h2>
     <p>
     <ul>
         <li class="next">Отдельный репозиторий для каждого сервиса</li>
@@ -110,28 +214,7 @@
     </ul>
     </p>
 </section>
-<section class="slide">
-    <h2>Cтек технологий</h2>
-    <p>
-    <ul>
-        <li>NodeJs</li>
-        <li>Python</li>
-        <li>Postgres</li>
-        <li>MongoDb</li>
-        <li>Redis</li>
-        <li>React</li>
-    </ul>
-    </p>
-</section>
-<section class="slide">
-    <h2>Выбор языка программирования</h2>
-    <p>
-        выбирайте тот инструмент,
-        который знает большинство в команаде,
-        если нет специфики задачи,
-        которая определяет выбор.
-    </p>
-</section>
+
 <section class="slide">
     <h2>Нельзя вот так просто взять и начать писать микросервисы</h2>
     <p>
@@ -226,6 +309,17 @@
 </section>
 <section class="slide">
     <h2>zipkin or https://www.envoyproxy.io</h2>
+</section>
+<section class="slide">
+    <h2>Monolithic  vs Microservices</h2>
+    <figure>
+        <blockquote>
+            <p>
+                If you can’t build a well-structured monolith, what makes you think microservices is the answer?
+            </p>
+        </blockquote>
+        <figcaption>Simon Brown</figcaption>
+    </figure>
 </section>
 <div class="progress"></div>
 
