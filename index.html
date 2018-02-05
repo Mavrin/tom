@@ -182,7 +182,6 @@ padding-left:40px;"
 </section>
 <section class="slide">
     <h2>Философия</h2>
-    <p>
     <ul>
         <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
         <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
@@ -191,7 +190,6 @@ padding-left:40px;"
         <li class="next">Принципы культуры и дизайна должны включать в себя «обход» прежних ошибок</li>
         <li class="next">Каждый сервис — эластичный, легко меняющийся, элементарный и при этом законченный.</li>
     </ul>
-    </p>
 </section>
 <section class="slide">
     <h2 class="shout shrink">Unix way</h2>
@@ -351,13 +349,11 @@ exit 0</code>
 </section>
 <section class="slide">
     <h2>Тестирование</h2>
-    <p>
     <ul>
         <li class="next">Unit</li>
         <li class="next">Integration (service public api)</li>
         <li class="next">e2e тесты на все сервисы перед релизом</li>
     </ul>
-    </p>
 </section>
 <section class="slide">
     <h2>Проблемы c CI</h2>
@@ -407,16 +403,19 @@ services:
 </section>
 <section class="slide">
     <h2>Сложности</h2>
-    <p>
     <ul>
-        <li class="next">Архитектура микросервисная, а код пишем как монолит.</li>
+        <li class="next">Архитектура микросервисная, а код пишем как монолит</li>
         <li class="next">Много усилий на создание инфраструктуры</li>
         <li class="next">Проблемы дебага приложений</li>
     </ul>
-    </p>
 </section>
 <section class="slide">
     <h2 class="shout shrink">Deploy</h2>
+</section>
+<section class="slide">
+    <video class="cover" autoplay loop>
+        <source src="pictures/v6dFs83.mp4">
+    </video>
 </section>
 <section class="slide">
     <img src="pictures/aj_jaj_jaj.jpg" alt="Обманывать не хорошо" class="cover">
@@ -433,39 +432,88 @@ services:
         <div id="boat"></div>
 </section>
 <section class="slide">
+   <h2>Пример helm deployment.yaml</h2>
+   <pre class="hg">
+       <code style="font-size: 12px" class="yaml">spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    spec:
+      containers:
+        - name: trello
+          image: {{ .Values.image.name -}}:{{- .Values.image.tag }}
+          ports:
+            - containerPort: ****
+              name: trello
+          env:
+            - name: ENV_REDIS_HOST
+              value: {{ required "'redis.host' is required" .Values.redis.host }}
+            - name: TRELLO_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: trello
+                  key: id
+
+       </code>
+   </pre>
+</section>
+<section class="slide">
+    <h2>Пример requirements.yaml</h2>
+    <pre class="hg">
+        <code class="yaml">dependencies:
+  - name: hogwarts
+    version: 1.0.0-develop-10614
+    repository: https://repository/helm-charts
+  - name: trello-proxy
+    version: 1.0.0-develop-10614
+    repository: https://repository/helm-charts
+  - name: sourcestore
+    version: 1.0.0-master-269
+    repository: https://repository/helm-charts
+        </code>
+    </pre>
+</section>
+<section class="slide">
+    <h2>Проблемы</h2>
+    <ul>
+        <li class="next">Легко ошибится в конфигурации сервиса.</li>
+        <li class="next">Забыть добавить в общий чарт новую версию сервиса.</li>
+        <li class="next">Тестовый сервер использует docker-compose вместо kubernetes :(</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Мониторинг</h2>
+</section>
+<section class="slide">
+    <h2><a href="https://sensuapp.org/"><img src="pictures/logo-horizontal.png" alt="sensu"></a></h2>
     <p>
-        Каждый коммит в master раскатывает новую версию на staging сервер (так было)
+        <img width="600" src="pictures/sensu.png" alt="sensu alert">
     </p>
 </section>
 <section class="slide">
-    <h2>Проблема</h2>
+    <h2 class="shout shrink">Как это дебажить?</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/feck_medium.gif" alt="debug">
+</section>
+<section class="slide">
+    <h2>Debug</h2>
+    <ul>
+        <li class="next">Kibana - для поиска по логам</li>
+        <li class="next">Prometheus - для метрик</li>
+        <li class="next">Grafana для визуализации метрик и информации о контейнерах</li>
+    </ul>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/Grafana.png" alt="Grafana">
+</section>
+<section class="slide">
+    <h2 class="shout shrink" style="font-size: 80px">Логи наше все, но их нужно связать</h2>
+</section>
+<section class="slide">
+    <h2><a href="https://zipkin.io/">Zipkin</a> or <a href="https://www.envoyproxy.io">Envoy</a></h2>
     <p>
-        Легко ошибится в конфигурации сервиса. Забыть добавить в общий чарт новую версию чарта.
+        <img width="800" src="pictures/web-screenshot.png" alt="Zipkin">
     </p>
-</section>
-<section class="slide">
-    <h2 class="shout">Мониторинг</h2>
-</section>
-<section class="slide">
-    <h2 class="shout">Логи Kibana</h2>
-</section>
-<section class="slide">
-    <h2 class="shout">Метрики Prometheus</h2>
-</section>
-<section class="slide">
-    <h2 class="shout">Grafana для визуализации данных</h2>
-</section>
-<section class="slide">
-    <h2>https://sensuapp.org/ для alerting в слак</h2>
-</section>
-<section class="slide">
-    <h2>Как это дебажить?</h2>
-</section>
-<section class="slide">
-    <h2>Логи наше все, но их нужно связать</h2>
-</section>
-<section class="slide">
-    <h2>zipkin or https://www.envoyproxy.io</h2>
 </section>
 <section class="slide">
     <h2>Monolithic vs Microservices</h2>
@@ -477,6 +525,9 @@ services:
         </blockquote>
         <figcaption>Simon Brown</figcaption>
     </figure>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Вопросы?</h2>
 </section>
 <div class="progress"></div>
 
