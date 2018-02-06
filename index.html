@@ -1,33 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Сказ о microservices</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+    <title>Сказ о microservices</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+    <link rel="stylesheet" href="vendor/default.min.css">
+    <style>
+        .hidePage::after {
+            visibility: hidden;
+        }
+
+        .slide pre.hg {
+            margin-bottom: 0;
+        }
+        .helm-slide::after {
+            background: url(pictures/pattern-waves.png) 0 0 repeat-x;
+            background-size: 20px;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 6px;
+            position: absolute;
+            width: 100%;
+        }
+
+        @keyframes a {
+            0% {
+                background-position: -220px 25%;
+                bottom: -7px
+            }
+            10%, 30%, 50%, 70%, 90% {
+                bottom: -12px
+            }
+            20%, 40%, 60%, 80% {
+                bottom: -7px
+            }
+            to {
+                background-position: 145% 0;
+                bottom: -7px
+            }
+        }
+
+        .slide:after {
+            display: none;
+        }
+        #boat {
+            background: url(pictures/boat.png) no-repeat;
+            margin-top: 60px;
+            background-size: 220px;
+            height: 169px;
+            position: relative;
+            animation: a 10s linear infinite;
+            animation-duration: 20s;
+        }
+    </style>
+    <style>
+        .slide pre.no-counter code:before {
+            content: none;
+        }
+
+        .grid-stack {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 50px;
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+        .grid-stack div {
+            display: flex;
+            align-items: center;
+        }
+
+        .grid-stack a {
+            background: none;
+        }
+
+        .grid-stack img {
+            height: 6em;
+        }
+
+        .grid-stack-one {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .grid-stack-two {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .grid-stack-three {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .grid-stack-four {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .grid-stack-five {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .grid-stack-six {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+    </style>
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Сказ о microservices</h1>
-		<p>Константин Кривленя</p>
-	</header>
+<header class="caption">
+    <h1>Сказ о microservices</h1>
+    <p><a target="_blank" href="https://twitter.com/krivlenia">Константин Кривленя</a></p>
 
-	<section class="slide">
+    <p style="font-size: .4em;margin-top: 20px;">Компания <a target="_blank"
+                                                             href="https://goo.gl/Wrm5CU">Targetprocess</a></p>
+</header>
+<section class="slide">
+    <div>
+        <h2>Немного о себе</h2>
+        <div style="display: flex">
+            <div style="flex-shrink: 1"><img style="padding-right: 20px" src="pictures/64lMqg7R6g4.jpg" alt="" /></div>
+            <div style="flex-shrink: 2">Зовут меня Константин Кривленя. <br />Разработчик в <a
+                    href="https://goo.gl/TDyXj2">Targetprocess</a>.<br/>
+                <a
+                        style="background:url(pictures/twitter-bird-light-bgs.png) no-repeat;padding-left:40px;"
+                        href="https://twitter.com/Krivlenia">Twitter (https://twitter.com/Krivlenia/)</a><br>
+                <a style="background:url(pictures/GitHub-Mark-32px.png) no-repeat;background-size: contain;
+padding-left:40px;"
+                   href="https://github.com/Mavrin">Github (https://github.com/Mavrin/)</a><br>
+                <a style="background:url(pictures/habrahabr.png) center left no-repeat;padding-left:20px;"
+                   href="https://habrahabr.ru/users/mavrin/">Хабр (https://habrahabr.ru/users/mavrin/)</a><br></div>
+        </div>
+    </div>
+</section>
+<section class="slide">
+    <h2 style="padding-left: 0" class="shout shrink"><span
+            style="display: flex; flex-direction: column; align-items: center;"><span>Monolithic</span> <span>vs</span> <span>Microservices</span></span>
+    </h2>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Monolithic</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/dom.jpg" alt="Monolithic house" />
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/mono-house-redesign.jpg" alt="Monolithic house redesign" />
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Microservices</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/microservices_house.jpg" alt="Microservices house" />
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/rumah-kubik.jpg" alt="real Microservices house" />
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Что такое микросервисы?</h2>
+</section>
+<section class="slide">
+    <p>
+        Микросервисы — современное представление
+        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D0%B2%D0%B8%D1%81-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0">сервис-ориентированной
+            архитектуры</a>
+        (SOA),
+        используемое для создания распределенных программных систем.
+        Как и в SOA, модули в архитектуре микросервисов взаимодействуют по сети друг с другом для выполнения цели.
+        Ещё одно сходство в том, что микросервисы используют протоколо-независимую технологию.
+        Данная архитектура является первой реализацией SOA, появившейся после внедрения DevOps,
+        и она постепенно становится стандартом для непрерывно развивающихся систем
+    </p>
+    <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Wikipedia</a>
+</section>
+<section class="slide">
+    <h2>Философия</h2>
+    <ul>
+        <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
+        <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
+            это снижает нагрузку на управление
+        </li>
+        <li class="next">Принципы культуры и дизайна должны включать в себя «обход» прежних ошибок</li>
+        <li class="next">Каждый сервис — эластичный, легко меняющийся, элементарный и при этом законченный.</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Unix way</h2>
+</section>
+<section class="slide">
+    <h2>Команда ls</h2>
+    <p>
+        44 опции в версии <a href="https://ru.wikipedia.org/wiki/GNU">GNU</a>
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Demo</h2>
+</section>
+<section class="slide">
+    <h2 class="shout">Разбиение на сервисы</h2>
+    <footer>
+        How to decompose an application into services?
         <ul>
-            <li>Разбиение</li>
-            <li>Тесистирование</li>
-            <li>Деплой</li>
-            <li>Мониторинг и трессировка</li>
-            <li>Провалы</li>
+            <li>Decompose by business capability - define services corresponding to business capabilities</li>
+            <li>Decompose by subdomain - define services corresponding to DDD subdomains</li>
         </ul>
-	</section>
+    </footer>
+</section>
+<section class="slide">
+    <h2>Сложности программирования</h2>
+    <figure>
+        <blockquote>
+            <p>
+                В компьютерных науках есть две сложности: инвалидация кэша, именование и ошибка на единицу.
+            </p>
+        </blockquote>
+        <figcaption>Нородная мудрость</figcaption>
+    </figure>
+</section>
+<section class="slide hidePage">
+    <img src="pictures/old_vizydrop_schema.svg" class="cover" alt="old vizydrop schema">
+</section>
+<section class="slide hidePage">
+    <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
+</section>
+<section class="slide">
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Architect: &quot;we should break this down
+        into 6 microservices&quot;<br>Me: &quot;you have 6 teams who hate each other?&quot;<br>Architect: &quot;how did
+        you know that?&quot;</p>&mdash; Colette Alexander (@colettecello) <a
+            href="https://twitter.com/colettecello/status/749052871719591937?ref_src=twsrc%5Etfw">July 2, 2016</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section class="slide">
+    <h2 class="shout">Процесс разработки</h2>
+</section>
+<section class="slide">
+    <h2>Cтек технологий</h2>
 
-	<div class="progress"></div>
+    <div class="grid-stack">
+        <div class="grid-stack-five"><a href="https://nodejs.com"><img src="pictures/nodejs.svg" alt="nodejs"></a></div>
+        <div class="grid-stack-two"><a href="https://www.python.org/"><img src="pictures/python.svg" alt="python"></a>
+        </div>
+        <div class="grid-stack-three"><a href="https://www.postgresql.org/"><img src="pictures/Postgresql_elephant.svg"
+                                                                                 alt="PostgreSQL"></a></div>
+        <div class="grid-stack-four"><a href="https://www.mongodb.com/"><img style="height: 3em"
+                                                                             src="pictures/mongodb.svg"
+                                                                             alt="mongodb"></a></div>
+        <div class="grid-stack-one"><a href="https://taucharts.com"><img style="height: 1.5em"
+                                                                         src="pictures/logo-color.svg" alt="Taucharts"></a>
+        </div>
+        <div class="grid-stack-six"><a href="https://facebook.github.io/react/"><img src="pictures/react.svg"
+                                                                                     alt="React"></a></div>
+    </div>
+</section>
+<section class="slide">
+    <img src="pictures/nodejs-vs-python.png" class="cover" alt="nodejs vs python">
+</section>
+<section class="slide">
+    <h2>Выбор языка программирования</h2>
+    <p>
+        Выбирайте тот инструмент,
+        который знает большинство в команде,
+        если нет специфики задачи,
+        которая определяет выбор.
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout">Процесс разработки</h2>
+</section>
+<section class="slide">
+    <h2>Source code</h2>
+    <p >
+        Отдельный репозиторий для каждого сервиса.
+    </p>
+    <p >
+        Общий репозиторий для настоек ci (есть куда стремиться).
+    </p>
+</section>
+<section class="slide">
+    <h2>Структура репозитория:</h2>
+    <pre class="no-counter">
+        <code>helm/</code>
+            <code>src/</code>
+            <code>...</code>
+            <code>package.json</code>
+            <code>manage.sh</code>
+            <code>Dockerfile</code>
+    </pre>
+</section>
+<section class="slide">
+    <h2>Dockerfile</h2>
+    <pre class="hg">
+<code style="font-size:20px" class="dockerfile">FROM node:8.9.3-alpine
+WORKDIR /trellopro
+RUN yarn global add pm2@2.9.1
+COPY package.json yarn.lock ./
+RUN yarn install
+COPY . .
+EXPOSE *****
+ENV NODE_ENV production
+ENV PORT *****
+ENTRYPOINT ["sh", "manage.sh"]
+CMD ["run-server"]</code>
+</pre>
+</section>
+<section class="slide">
+    <h2>Manage.sh</h2>
+    <pre class="hg">
+<code style="font-size:20px" class="bash">#!/usr/bin/env sh
+set -e;
+case "$1" in
+  run-server)
+    pm2-docker start --raw app/process.yaml
+    ;;
+  run-tests)
+    yarn run lint-teamcity
+    yarn run test-teamcity
+    ;;
+  *)
+    echo "Usage: manage.sh {run-server|run-tests}"
+    exit 1
+esac
+exit 0</code>
+</pre>
+</section>
+<section class="slide">
+    <h2>Teamcity config</h2>
+    <pre class="hg">
+<code style="font-size: 20px" class="kotlin">object TrelloBuild : BuildType({
+    steps {
+        script {name = "docker: build image"}
+        script {name = "docker: run tests"}
+        script {name = "docker: run integration-tests"}
+        script {name = "docker: run e2e-tests"}
+        script {name = "docker: push"}
+        script {name = "helm: package (trello)"}
+        script {name = "helm: publish"}
+    }
+})</code>
+    </pre>
+</section>
+<section class="slide">
+    <h2>Тестирование</h2>
+    <ul>
+        <li class="next">Unit</li>
+        <li class="next">Integration (service public api)</li>
+        <li class="next">e2e тесты на все сервисы перед релизом</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2>Проблемы c CI</h2>
+    <p>
+        Конфигурация запуска тестов хранится в отдельном репозитории, а лучше бы в репозитории сервиса.
+    </p>
+</section>
+<section class="slide">
+    <h2 style="font-size: 100px" class="shout shrink">Что делать, если у сервиса есть зависимости?</h2>
+</section>
+<section class="slide">
+    <h2>Composr - service for generating docker-compose files</h2>
+    <ul>
+        <li class="">Для билда</li>
+        <li class="">Для запуска сервиса (удобно для тестирования)</li>
+        <li class="">Для запуска тестов на сервисеы</li>
+    </ul>
+    <pre>
+        <code>curl -s http://copmoser/compose/sourcestore/up/tests
+            > sourcestore.compose.tests.yml</code>
+    </pre>
+</section>
+<section class="slide">
+    <h2>Ответ из composer</h2>
+    <pre class="hg">
+        <code style="font-size: 12px" class="yml">version: 3
+services:
+  dataparser:
+    image: *company*/dataparser:master # всегда master
+  mongo:
+    image: mongo:3.4
+  postgres:
+    environment:
+    ...
+    image: postgres:master
+  sourcestore:
+    command: run-tests
+    depends_on:
+    - postgres
+    - dataparser
+    - mongo
+    image: ci_sourcestore:latest</code>
+    </pre>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/risovach.ru.jpg" alt="Нельзя вот так просто взять и начать писать микросервисы">
+</section>
+<section class="slide">
+    <h2>Сложности</h2>
+    <ul>
+        <li class="next">Архитектура микросервисная, а код пишем как монолит</li>
+        <li class="next">Много усилий на создание инфраструктуры</li>
+        <li class="next">Проблемы дебага приложений</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Deploy</h2>
+</section>
+<section class="slide">
+    <video class="cover" autoplay loop>
+        <source src="pictures/v6dFs83.mp4">
+    </video>
+</section>
+<section class="slide">
+    <img src="pictures/aj_jaj_jaj.jpg" alt="Обманывать не хорошо" class="cover">
+</section>
+<section class="slide black">
+    <img src="pictures/nav_logo.svg" alt="Kubernetes" class="cover">
+</section>
+<section style="background: url('pictures/pattern-topo.png'); padding: 0" class="slide helm-slide">
+        <div style="padding: 106px 100px 0;">
+            <a style="background: none" href="https://helm.sh/" title="Helm.sh"><img width="112" src="pictures/helm-logo.svg" alt="Helm" class="helm-logo"></a>
+            <h2>The package manager for Kubernetes</h2>
+            <h3>Helm is the best way to find, share, and use software built for <a href="https://kubernetes.io/" title="Kubernetes" target="_blank">Kubernetes</a>.</h3>
+        </div>
+        <div id="boat"></div>
+</section>
+<section class="slide">
+   <h2>Пример helm deployment.yaml</h2>
+   <pre class="hg">
+       <code style="font-size: 12px" class="yaml">spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    spec:
+      containers:
+        - name: trello
+          image: {{ .Values.image.name -}}:{{- .Values.image.tag }}
+          ports:
+            - containerPort: ****
+              name: trello
+          env:
+            - name: ENV_REDIS_HOST
+              value: {{ required "'redis.host' is required" .Values.redis.host }}
+            - name: TRELLO_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: trello
+                  key: id
 
-	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2018 Константин Кривленя -->
+       </code>
+   </pre>
+</section>
+<section class="slide">
+    <h2>Пример requirements.yaml</h2>
+    <pre class="hg">
+        <code class="yaml">dependencies:
+  - name: hogwarts
+    version: 1.0.0-develop-10614
+    repository: https://repository/helm-charts
+  - name: trello-proxy
+    version: 1.0.0-develop-10614
+    repository: https://repository/helm-charts
+  - name: sourcestore
+    version: 1.0.0-master-269
+    repository: https://repository/helm-charts
+        </code>
+    </pre>
+</section>
+<section class="slide">
+    <h2>Проблемы</h2>
+    <ul>
+        <li class="next">Легко ошибится в конфигурации сервиса.</li>
+        <li class="next">Забыть добавить в общий чарт новую версию сервиса.</li>
+        <li class="next">Тестовый сервер использует docker-compose вместо kubernetes :(</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Мониторинг</h2>
+</section>
+<section class="slide">
+    <h2><a href="https://sensuapp.org/"><img src="pictures/logo-horizontal.png" alt="sensu"></a></h2>
+    <p>
+        <img width="600" src="pictures/sensu.png" alt="sensu alert">
+    </p>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Как это дебажить?</h2>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/feck_medium.gif" alt="debug">
+</section>
+<section class="slide">
+    <h2>Debug</h2>
+    <ul>
+        <li class="next">Kibana - для поиска по логам</li>
+        <li class="next">Prometheus - для метрик</li>
+        <li class="next">Grafana для визуализации метрик и информации о контейнерах</li>
+    </ul>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/Grafana.png" alt="Grafana">
+</section>
+<section class="slide">
+    <h2 class="shout shrink" style="font-size: 80px">Логи наше все, но их нужно связать</h2>
+</section>
+<section class="slide">
+    <h2><a href="https://zipkin.io/">Zipkin</a> or <a href="https://www.envoyproxy.io">Envoy</a></h2>
+    <p>
+        <img width="800" src="pictures/web-screenshot.png" alt="Zipkin">
+    </p>
+</section>
+<section class="slide">
+    <h2>Monolithic vs Microservices</h2>
+    <figure>
+        <blockquote>
+            <p>
+                If you can’t build a well-structured monolith, what makes you think microservices is the answer?
+            </p>
+        </blockquote>
+        <figcaption>Simon Brown</figcaption>
+    </figure>
+</section>
+<section class="slide">
+    <h2 class="shout shrink">Вопросы?</h2>
+</section>
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+<script src="vendor/highlight.pack.js"></script>
+<script>
+    Array.from(document.querySelectorAll('.hg code')).forEach(function (block) {
+        hljs.highlightBlock(block);
+    });
+</script>
+<!-- Copyright © 2018 Константин Кривленя -->
 
 </body>
 </html>
