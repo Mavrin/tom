@@ -142,13 +142,13 @@
     <ul>
         <li class="next">Простота разработки - текущие инструменты разработки и IDE хорошо поддерживают разработку таких приложений</li>
         <li class="next">Простота доставки - обычно это один артифакт, который может быть доставлен простым копированием на сервер</li>
-        <li class="next">Простота маштобирования - просто запускаем множество копий приложения, за балансировщиком</li>
+        <li class="next">Простота маштобирования - просто запускаем множество копий приложения за балансировщиком</li>
     </ul>
 </section>
 <section class="slide">
     <h2>Недостатки монолитной арихитектуры</h2>
     <ul>
-        <li class="next">Большая кодовая база - сложно понять и изменять систему, особенно новым программистам, модульность проекта легко ломается из-за неявных границ ответсвенности.</li>
+        <li class="next">Большая кодовая база - сложно понять и изменять систему, особенно новым программистам, модульность проекта легко ломается из-за неявных границ ответсвенности</li>
         <li class="next">Инструменты разработки и IDE - начинают тупить из размера кодовой базы</li>
         <li class="next">Непрерывная доставка стоновится сложной, так как любой модуль может сломать всю систему</li>
         <li class="next">Завязка на один стек технологий</li>
@@ -202,8 +202,9 @@
 </section>
 <section class="slide">
     <h2>Команда ls</h2>
-    <p>
+    <p style="font-size: 54px;padding-top:40px;">
         44 опции в версии <a href="https://ru.wikipedia.org/wiki/GNU">GNU</a>
+        <img style="position: relative; top:-65px;" align="right" src="pictures/220px-Marvin_(HHGG).jpg" alt="marvin">
     </p>
 </section>
 <section class="slide">
@@ -230,22 +231,17 @@
         <figcaption>Нородная мудрость</figcaption>
     </figure>
 </section>
+<section class="slide">
+    <img class="cover" src="pictures/maxresdefault.jpg" alt="Джоан Роулинг">
+</section>
 <section class="slide hidePage">
     <img src="pictures/old_vizydrop_schema.svg" class="cover" alt="old vizydrop schema">
 </section>
 <section class="slide hidePage">
     <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
 </section>
-<!--<section class="slide">
-    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Architect: &quot;we should break this down
-        into 6 microservices&quot;<br>Me: &quot;you have 6 teams who hate each other?&quot;<br>Architect: &quot;how did
-        you know that?&quot;</p>&mdash; Colette Alexander (@colettecello) <a
-            href="https://twitter.com/colettecello/status/749052871719591937?ref_src=twsrc%5Etfw">July 2, 2016</a>
-    </blockquote>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</section>-->
 <section class="slide">
-    <h2 class="shout">На чем написано?</h2>
+    <h2 class="shout">На чем писать микросервисы?</h2>
 </section>
 <section class="slide">
     <h2>Cтек технологий</h2>
@@ -286,6 +282,7 @@
     <ul>
         <li class="next">Отдельный репозиторий для каждого сервиса.</li>
         <li class="next">Gitflow для работы с фичами</li>
+        <li class="next">CI запускается на merge request</li>
         <li class="next">Артифакт CI - docker container</li>
     </ul>
 </section>
@@ -364,7 +361,7 @@ exit 0</code>
     </p>
 </section>
 <section class="slide">
-    <h2 style="font-size: 100px" class="shout shrink">Что делать, если у сервиса есть зависимости?</h2>
+    <h2 style="font-size: 100px" class="shout shrink">Откуда CI знает как запустить тесты?</h2>
 </section>
 <section class="slide">
     <h2>Composr - service for generating docker-compose files</h2>
@@ -382,21 +379,20 @@ exit 0</code>
 <section class="slide">
     <h2>Ответ из composer</h2>
     <pre class="hg">
-        <code style="font-size: 12px" class="yml">version: 3
+        <code style="font-size: 20px" class="yml">version: 3
 services:
   dataparser:
-    image: *company*/dataparser:master # всегда master
+    image: *company*/dataparser:master
   sourcestore:
     command: run-tests
+    image: ci_sourcestore:latest
     depends_on:
     - postgres
-    ...
-    image: ci_sourcestore:latest</code>
+    ...</code>
     </pre>
 </section>
 <section class="slide">
-    <h2>Почему master?</h2>
-
+    <h2>Зачем нам этот сервис? Почему не хранить docker-compose в репозиторие сервиса?</h2>
 </section>
 <section class="slide">
     <h2>Сложности</h2>
@@ -417,9 +413,6 @@ services:
         <source src="pictures/v6dFs83.mp4">
     </video>
 </section>
-<section class="slide">
-    <img src="pictures/aj_jaj_jaj.jpg" alt="Обманывать не хорошо" class="cover">
-</section>
 <section class="slide black">
     <img src="pictures/nav_logo.svg" alt="Kubernetes" class="cover">
 </section>
@@ -434,7 +427,7 @@ services:
 <section class="slide">
    <h2>Пример helm deployment.yaml</h2>
    <pre class="hg">
-       <code style="font-size: 12px" class="yaml">spec:
+       <code style="font-size: 20px" class="yaml">spec:
   replicas: {{ .Values.replicas }}
   template:
     spec:
@@ -444,13 +437,19 @@ services:
           env:
             - name: ENV_REDIS_HOST
               value: {{ required "'redis.host' is required" .Values.redis.host }}
-            - name: TRELLO_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: trello
-                  key: id
-
-       </code>
+        </code>
+   </pre>
+</section>
+<section style="padding-left: 50px;" class="slide">
+    <h2>Пример helm values.yaml</h2>
+    <pre class="hg">
+       <code class="yaml">image:
+  name: trello
+  tag: trello-130
+replicas: 1
+redis:
+  host: "redis://"
+        </code>
    </pre>
 </section>
 <section class="slide">
@@ -459,13 +458,16 @@ services:
         <code class="yaml">dependencies:
   - name: hogwarts
     version: 1.0.0-develop-10614
-    repository: https://repository/helm-charts
+    repository: https://repository/helm-build
   - name: trello-proxy
     version: 1.0.0-develop-10614
-    repository: https://repository/helm-charts
+    repository: https://repository/helm-build
   ...
         </code>
     </pre>
+</section>
+<section class="slide">
+    <img src="pictures/a88.jpg" alt="we need go deeper">
 </section>
 <section class="slide">
     <h2>Проблемы</h2>
@@ -511,6 +513,12 @@ services:
     </p>
 </section>
 <section class="slide">
+    <img class="cover" src="pictures/microservices_house.jpg" alt="Microservices house" />
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/rumah-kubik.jpg" alt="real Microservices house" />
+</section>
+<section class="slide">
     <h2>Monolithic vs Microservices</h2>
     <figure>
         <blockquote>
@@ -520,6 +528,9 @@ services:
         </blockquote>
         <figcaption>Simon Brown</figcaption>
     </figure>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/1458851151163315434.jpg" alt="норамально делай, нормально будет">
 </section>
 <section class="slide">
     <div>
