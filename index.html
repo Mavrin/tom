@@ -187,7 +187,7 @@
     <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Wikipedia</a>
 </section>
 <section class="slide">
-    <h2>Философия</h2>
+    <h2>Философия микросервисной архитектуры</h2>
     <ul>
         <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
         <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
@@ -236,16 +236,16 @@
 <section class="slide hidePage">
     <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
 </section>
-<section class="slide">
+<!--<section class="slide">
     <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Architect: &quot;we should break this down
         into 6 microservices&quot;<br>Me: &quot;you have 6 teams who hate each other?&quot;<br>Architect: &quot;how did
         you know that?&quot;</p>&mdash; Colette Alexander (@colettecello) <a
             href="https://twitter.com/colettecello/status/749052871719591937?ref_src=twsrc%5Etfw">July 2, 2016</a>
     </blockquote>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</section>
+</section>-->
 <section class="slide">
-    <h2 class="shout">Процесс разработки</h2>
+    <h2 class="shout">На чем написано?</h2>
 </section>
 <section class="slide">
     <h2>Cтек технологий</h2>
@@ -279,16 +279,15 @@
     </p>
 </section>
 <section class="slide">
-    <h2 class="shout">Процесс разработки</h2>
+    <h2 class="shout">Как устроен процесс разработки</h2>
 </section>
 <section class="slide">
-    <h2>Source code</h2>
-    <p >
-        Отдельный репозиторий для каждого сервиса.
-    </p>
-    <p >
-        Общий репозиторий для настоек ci (есть куда стремиться).
-    </p>
+    <h2>Процесс разработки</h2>
+    <ul>
+        <li class="next">Отдельный репозиторий для каждого сервиса.</li>
+        <li class="next">Gitflow для работы с фичами</li>
+        <li class="next">Артифакт CI - docker container</li>
+    </ul>
 </section>
 <section class="slide">
     <h2>Структура репозитория:</h2>
@@ -308,13 +307,10 @@
 WORKDIR /trellopro
 RUN yarn global add pm2@2.9.1
 COPY package.json yarn.lock ./
-RUN yarn install
-COPY . .
-EXPOSE *****
-ENV NODE_ENV production
-ENV PORT *****
+RUN yarn install #создаем слой для зависимостей
+COPY . . #создаем слой приложения
 ENTRYPOINT ["sh", "manage.sh"]
-CMD ["run-server"]</code>
+</code>
 </pre>
 </section>
 <section class="slide">
@@ -375,11 +371,12 @@ exit 0</code>
     <ul>
         <li class="">Для билда</li>
         <li class="">Для запуска сервиса (удобно для тестирования)</li>
-        <li class="">Для запуска тестов на сервисеы</li>
+        <li class="">Для запуска тестов на сервисы</li>
     </ul>
     <pre>
-        <code>curl -s http://copmoser/compose/sourcestore/up/tests
-            > sourcestore.compose.tests.yml</code>
+        <code>curl -s
+    http://copmoser/compose/sourcestore/up/(tests|build|e2e)
+    > sourcestore.compose.tests.yml</code>
     </pre>
 </section>
 <section class="slide">
@@ -389,23 +386,17 @@ exit 0</code>
 services:
   dataparser:
     image: *company*/dataparser:master # всегда master
-  mongo:
-    image: mongo:3.4
-  postgres:
-    environment:
-    ...
-    image: postgres:master
   sourcestore:
     command: run-tests
     depends_on:
     - postgres
-    - dataparser
-    - mongo
+    ...
     image: ci_sourcestore:latest</code>
     </pre>
 </section>
 <section class="slide">
-    <img class="cover" src="pictures/risovach.ru.jpg" alt="Нельзя вот так просто взять и начать писать микросервисы">
+    <h2>Почему master?</h2>
+
 </section>
 <section class="slide">
     <h2>Сложности</h2>
@@ -414,6 +405,9 @@ services:
         <li class="next">Много усилий на создание инфраструктуры</li>
         <li class="next">Проблемы дебага приложений</li>
     </ul>
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/risovach.ru.jpg" alt="Нельзя вот так просто взять и начать писать микросервисы">
 </section>
 <section class="slide">
     <h2 class="shout shrink">Deploy</h2>
@@ -447,9 +441,6 @@ services:
       containers:
         - name: trello
           image: {{ .Values.image.name -}}:{{- .Values.image.tag }}
-          ports:
-            - containerPort: ****
-              name: trello
           env:
             - name: ENV_REDIS_HOST
               value: {{ required "'redis.host' is required" .Values.redis.host }}
@@ -472,17 +463,15 @@ services:
   - name: trello-proxy
     version: 1.0.0-develop-10614
     repository: https://repository/helm-charts
-  - name: sourcestore
-    version: 1.0.0-master-269
-    repository: https://repository/helm-charts
+  ...
         </code>
     </pre>
 </section>
 <section class="slide">
     <h2>Проблемы</h2>
     <ul>
-        <li class="next">Легко ошибится в конфигурации сервиса.</li>
-        <li class="next">Забыть добавить в общий чарт новую версию сервиса.</li>
+        <li class="next">Легко ошибится в конфигурации сервиса</li>
+        <li class="next">Забыть добавить в общий чарт новую версию сервиса</li>
         <li class="next">Тестовый сервер использует docker-compose вместо kubernetes :(</li>
     </ul>
 </section>
