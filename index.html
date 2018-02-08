@@ -123,30 +123,39 @@
                                                              href="https://goo.gl/Wrm5CU">Targetprocess</a></p>
 </header>
 <section class="slide">
-    <div>
-        <h2>Немного о себе</h2>
-        <div style="display: flex">
-            <div style="flex-shrink: 1"><img style="padding-right: 20px" src="pictures/64lMqg7R6g4.jpg" alt="" /></div>
-            <div style="flex-shrink: 2">Зовут меня Константин Кривленя. <br />Разработчик в <a
-                    href="https://goo.gl/TDyXj2">Targetprocess</a>.<br/>
-                <a
-                        style="background:url(pictures/twitter-bird-light-bgs.png) no-repeat;padding-left:40px;"
-                        href="https://twitter.com/Krivlenia">Twitter (https://twitter.com/Krivlenia/)</a><br>
-                <a style="background:url(pictures/GitHub-Mark-32px.png) no-repeat;background-size: contain;
-padding-left:40px;"
-                   href="https://github.com/Mavrin">Github (https://github.com/Mavrin/)</a><br>
-                <a style="background:url(pictures/habrahabr.png) center left no-repeat;padding-left:20px;"
-                   href="https://habrahabr.ru/users/mavrin/">Хабр (https://habrahabr.ru/users/mavrin/)</a><br></div>
-        </div>
-    </div>
+    <h2 class="shout"><a href="https://goo.gl/YMZaBW">goo.gl/YMZaBW</a></h2>
 </section>
 <section class="slide">
-    <h2 style="padding-left: 0" class="shout shrink"><span
-            style="display: flex; flex-direction: column; align-items: center;"><span>Monolithic</span> <span>vs</span> <span>Microservices</span></span>
-    </h2>
+    <h2 style="left: 0;
+    position: absolute;
+    bottom: -29px;
+    text-align: center;
+    width: 100%;
+    background: white;">В этот раз я все сделаю правильно!</h2>
+    <img style="top:46%" height="590" class="cover" src="pictures/C4SNN.jpg" alt="В этот раз я все сделаю правильно!">
+</section>
+<section class="slide">
+    <img class="cover" src="pictures/1_EiqCv5ENbf7LuwYAi04qTQ.png" alt="">
 </section>
 <section class="slide">
     <h2 class="shout shrink">Monolithic</h2>
+</section>
+<section class="slide">
+    <h2>Преимущество монолитной арихитектуры</h2>
+    <ul>
+        <li class="next">Простота разработки - текущие инструменты разработки и IDE хорошо поддерживают разработку таких приложений</li>
+        <li class="next">Простота доставки - обычно это один артифакт, который может быть доставлен простым копированием на сервер</li>
+        <li class="next">Простота маштобирования - просто запускаем множество копий приложения за балансировщиком</li>
+    </ul>
+</section>
+<section class="slide">
+    <h2>Недостатки монолитной арихитектуры</h2>
+    <ul>
+        <li class="next">Большая кодовая база - сложно понять и изменять систему, особенно новым программистам, модульность проекта легко ломается из-за неявных границ ответсвенности</li>
+        <li class="next">Инструменты разработки и IDE - начинают тупить из размера кодовой базы</li>
+        <li class="next">Непрерывная доставка стоновится сложной, так как любой модуль может сломать всю систему</li>
+        <li class="next">Завязка на один стек технологий</li>
+    </ul>
 </section>
 <section class="slide">
     <img class="cover" src="pictures/dom.jpg" alt="Monolithic house" />
@@ -156,15 +165,6 @@ padding-left:40px;"
 </section>
 <section class="slide">
     <h2 class="shout shrink">Microservices</h2>
-</section>
-<section class="slide">
-    <img class="cover" src="pictures/microservices_house.jpg" alt="Microservices house" />
-</section>
-<section class="slide">
-    <img class="cover" src="pictures/rumah-kubik.jpg" alt="real Microservices house" />
-</section>
-<section class="slide">
-    <h2 class="shout shrink">Что такое микросервисы?</h2>
 </section>
 <section class="slide">
     <p>
@@ -181,7 +181,7 @@ padding-left:40px;"
     <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B8%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B">Wikipedia</a>
 </section>
 <section class="slide">
-    <h2>Философия</h2>
+    <h2>Философия микросервисной архитектуры</h2>
     <ul>
         <li class="next">Сервисы — небольшие, выполняют каждый свою, единственную функцию</li>
         <li class="next">Организационная культура включает в себя автоматизацию разработки и тестирования,
@@ -196,12 +196,13 @@ padding-left:40px;"
 </section>
 <section class="slide">
     <h2>Команда ls</h2>
-    <p>
+    <p style="font-size: 54px;padding-top:40px;">
         44 опции в версии <a href="https://ru.wikipedia.org/wiki/GNU">GNU</a>
+        <img style="position: relative; top:-65px;" align="right" src="pictures/220px-Marvin_(HHGG).jpg" alt="marvin">
     </p>
 </section>
 <section class="slide">
-    <h2 class="shout">Demo</h2>
+    <h2 class="shout"><a href="https://goo.gl/VEDHKH">Demo</a></h2>
 </section>
 <section class="slide">
     <h2 class="shout">Разбиение на сервисы</h2>
@@ -224,6 +225,9 @@ padding-left:40px;"
         <figcaption>Нородная мудрость</figcaption>
     </figure>
 </section>
+<section class="slide">
+    <img class="cover" src="pictures/maxresdefault.jpg" alt="Джоан Роулинг">
+</section>
 <section class="slide hidePage">
     <img src="pictures/old_vizydrop_schema.svg" class="cover" alt="old vizydrop schema">
 </section>
@@ -231,15 +235,7 @@ padding-left:40px;"
     <img src="pictures/new_vizydrop_schema.svg" class="cover" alt="new vizydrop schema">
 </section>
 <section class="slide">
-    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Architect: &quot;we should break this down
-        into 6 microservices&quot;<br>Me: &quot;you have 6 teams who hate each other?&quot;<br>Architect: &quot;how did
-        you know that?&quot;</p>&mdash; Colette Alexander (@colettecello) <a
-            href="https://twitter.com/colettecello/status/749052871719591937?ref_src=twsrc%5Etfw">July 2, 2016</a>
-    </blockquote>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</section>
-<section class="slide">
-    <h2 class="shout">Процесс разработки</h2>
+    <h2 class="shout" style="font-size: 100px;">На чем писать микросервисы?</h2>
 </section>
 <section class="slide">
     <h2>Cтек технологий</h2>
@@ -273,16 +269,16 @@ padding-left:40px;"
     </p>
 </section>
 <section class="slide">
-    <h2 class="shout">Процесс разработки</h2>
+    <h2 class="shout" style="font-size: 100px;">Как устроен процесс разработки</h2>
 </section>
 <section class="slide">
-    <h2>Source code</h2>
-    <p >
-        Отдельный репозиторий для каждого сервиса.
-    </p>
-    <p >
-        Общий репозиторий для настоек ci (есть куда стремиться).
-    </p>
+    <h2>Процесс разработки</h2>
+    <ul>
+        <li class="next">Отдельный репозиторий для каждого сервиса.</li>
+        <li class="next">Gitflow для работы с фичами</li>
+        <li class="next">CI запускается на merge request</li>
+        <li class="next">Артифакт CI - docker container</li>
+    </ul>
 </section>
 <section class="slide">
     <h2>Структура репозитория:</h2>
@@ -302,13 +298,10 @@ padding-left:40px;"
 WORKDIR /trellopro
 RUN yarn global add pm2@2.9.1
 COPY package.json yarn.lock ./
-RUN yarn install
-COPY . .
-EXPOSE *****
-ENV NODE_ENV production
-ENV PORT *****
+RUN yarn install #создаем слой для зависимостей
+COPY . . #создаем слой приложения
 ENTRYPOINT ["sh", "manage.sh"]
-CMD ["run-server"]</code>
+</code>
 </pre>
 </section>
 <section class="slide">
@@ -362,44 +355,38 @@ exit 0</code>
     </p>
 </section>
 <section class="slide">
-    <h2 style="font-size: 100px" class="shout shrink">Что делать, если у сервиса есть зависимости?</h2>
+    <h2 style="font-size: 100px" class="shout shrink">Откуда CI знает как запустить тесты?</h2>
 </section>
 <section class="slide">
     <h2>Composr - service for generating docker-compose files</h2>
     <ul>
         <li class="">Для билда</li>
         <li class="">Для запуска сервиса (удобно для тестирования)</li>
-        <li class="">Для запуска тестов на сервисеы</li>
+        <li class="">Для запуска тестов на сервисы</li>
     </ul>
     <pre>
-        <code>curl -s http://copmoser/compose/sourcestore/up/tests
-            > sourcestore.compose.tests.yml</code>
+        <code>curl -s
+    http://copmoser/compose/sourcestore/up/(tests|build|e2e)
+    > sourcestore.compose.tests.yml</code>
     </pre>
 </section>
 <section class="slide">
     <h2>Ответ из composer</h2>
     <pre class="hg">
-        <code style="font-size: 12px" class="yml">version: 3
+        <code style="font-size: 20px" class="yml">version: 3
 services:
   dataparser:
-    image: *company*/dataparser:master # всегда master
-  mongo:
-    image: mongo:3.4
-  postgres:
-    environment:
-    ...
-    image: postgres:master
+    image: *company*/dataparser:master
   sourcestore:
     command: run-tests
+    image: ci_sourcestore:latest
     depends_on:
     - postgres
-    - dataparser
-    - mongo
-    image: ci_sourcestore:latest</code>
+    ...</code>
     </pre>
 </section>
 <section class="slide">
-    <img class="cover" src="pictures/risovach.ru.jpg" alt="Нельзя вот так просто взять и начать писать микросервисы">
+    <h2 class="shout" style="font-size: 60px;">Зачем нам этот сервис? Почему не хранить docker-compose в репозитории сервиса?</h2>
 </section>
 <section class="slide">
     <h2>Сложности</h2>
@@ -410,15 +397,15 @@ services:
     </ul>
 </section>
 <section class="slide">
+    <img class="cover" src="pictures/risovach.ru.jpg" alt="Нельзя вот так просто взять и начать писать микросервисы">
+</section>
+<section class="slide">
     <h2 class="shout shrink">Deploy</h2>
 </section>
 <section class="slide">
     <video class="cover" autoplay loop>
         <source src="pictures/v6dFs83.mp4">
     </video>
-</section>
-<section class="slide">
-    <img src="pictures/aj_jaj_jaj.jpg" alt="Обманывать не хорошо" class="cover">
 </section>
 <section class="slide black">
     <img src="pictures/nav_logo.svg" alt="Kubernetes" class="cover">
@@ -434,26 +421,29 @@ services:
 <section class="slide">
    <h2>Пример helm deployment.yaml</h2>
    <pre class="hg">
-       <code style="font-size: 12px" class="yaml">spec:
+       <code style="font-size: 20px" class="yaml">spec:
   replicas: {{ .Values.replicas }}
   template:
     spec:
       containers:
         - name: trello
           image: {{ .Values.image.name -}}:{{- .Values.image.tag }}
-          ports:
-            - containerPort: ****
-              name: trello
           env:
             - name: ENV_REDIS_HOST
               value: {{ required "'redis.host' is required" .Values.redis.host }}
-            - name: TRELLO_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: trello
-                  key: id
-
-       </code>
+        </code>
+   </pre>
+</section>
+<section style="padding-left: 50px;" class="slide">
+    <h2>Пример helm values.yaml</h2>
+    <pre class="hg">
+       <code class="yaml">image:
+  name: trello
+  tag: trello-130
+replicas: 1
+redis:
+  host: "redis://"
+        </code>
    </pre>
 </section>
 <section class="slide">
@@ -462,21 +452,22 @@ services:
         <code class="yaml">dependencies:
   - name: hogwarts
     version: 1.0.0-develop-10614
-    repository: https://repository/helm-charts
+    repository: https://repository/helm-build
   - name: trello-proxy
     version: 1.0.0-develop-10614
-    repository: https://repository/helm-charts
-  - name: sourcestore
-    version: 1.0.0-master-269
-    repository: https://repository/helm-charts
+    repository: https://repository/helm-build
+  ...
         </code>
     </pre>
 </section>
 <section class="slide">
+    <img src="pictures/a88.jpg" alt="we need go deeper">
+</section>
+<section class="slide">
     <h2>Проблемы</h2>
     <ul>
-        <li class="next">Легко ошибится в конфигурации сервиса.</li>
-        <li class="next">Забыть добавить в общий чарт новую версию сервиса.</li>
+        <li class="next">Легко ошибится в конфигурации сервиса</li>
+        <li class="next">Забыть добавить в общий чарт новую версию сервиса</li>
         <li class="next">Тестовый сервер использует docker-compose вместо kubernetes :(</li>
     </ul>
 </section>
@@ -527,7 +518,25 @@ services:
     </figure>
 </section>
 <section class="slide">
-    <h2 class="shout shrink">Вопросы?</h2>
+    <img class="cover" src="pictures/1458851151163315434.jpg" alt="норамально делай, нормально будет">
+</section>
+<section class="slide">
+    <div>
+        <h2>Вопросы?</h2>
+        <div style="display: flex">
+            <div style="flex-shrink: 1"><img style="padding-right: 20px" src="pictures/64lMqg7R6g4.jpg" alt="" /></div>
+            <div style="flex-shrink: 2">Кто я - Константин Кривленя. <br />Разработчик в <a
+                    href="https://goo.gl/TDyXj2">Targetprocess</a>.<br/>
+                <a
+                        style="background:url(pictures/twitter-bird-light-bgs.png) no-repeat;padding-left:40px;"
+                        href="https://twitter.com/Krivlenia">Twitter (https://twitter.com/Krivlenia/)</a><br>
+                <a style="background:url(pictures/GitHub-Mark-32px.png) no-repeat;background-size: contain;
+padding-left:40px;"
+                   href="https://github.com/Mavrin">Github (https://github.com/Mavrin/)</a><br>
+                <a style="background:url(pictures/habrahabr.png) center left no-repeat;padding-left:20px;"
+                   href="https://habrahabr.ru/users/mavrin/">Хабр (https://habrahabr.ru/users/mavrin/)</a><br></div>
+        </div>
+    </div>
 </section>
 <div class="progress"></div>
 
